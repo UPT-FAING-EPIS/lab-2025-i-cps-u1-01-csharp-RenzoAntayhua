@@ -1,0 +1,7 @@
+organization=renzoantayhua
+projectKey=RenzoAntayhua_lab-2025-i-cps-u1-01-csharp-RenzoAntayhua
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.61173
+dashboardUrl=https://sonarcloud.io/dashboard?id=RenzoAntayhua_lab-2025-i-cps-u1-01-csharp-RenzoAntayhua
+ceTaskId=AZXgxycQhN1MGpvqBhlG
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZXgxycQhN1MGpvqBhlG

@@ -1,0 +1,1 @@
+ŒRvC:\Users\playg\OneDrive\Escritorio\Lab01\lab-2025-i-cps-u1-01-csharp-RenzoAntayhua\Bank\Bank.Domain\Bank.Domain.csproj¢net8.0òCSharp12
