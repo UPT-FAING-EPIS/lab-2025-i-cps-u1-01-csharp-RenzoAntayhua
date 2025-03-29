@@ -46,16 +46,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Generar tag dinámico
+        id: generate_tag
+        run: echo "TAG_NAME=release-$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_ENV
       - name: Obtener notas de los commits
         id: changelog
         run: |
-          echo "## Cambios en la versión 1.0.0" > release_notes.md
-          git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s" >> release_notes.md
+          echo "## Cambios en la versión ${{ env.TAG_NAME }}" > release_notes.md
+          git log --pretty=format:"- %s" -n 10 >> release_notes.md
+      - name: Crear nuevo tag
+        run: |
+          git tag ${{ env.TAG_NAME }}
+          git push origin ${{ env.TAG_NAME }}
       - name: Crear Release en GitHub
         uses: ncipollo/release-action@v1
         with:
-            tag: "release-$(date +'%Y%m%d-%H%M%S')"  # Genera un tag único
-            name: "Release $(date +'%Y-%m-%d %H:%M:%S')"
-            bodyFile: "release_notes.md"
-            token: ${{ secrets.GH_TOKEN }}
-            replacesArtifacts: true
+          tag: ${{ env.TAG_NAME }}
+          name: "Release ${{ env.TAG_NAME }}"
+          bodyFile: "release_notes.md"
+          token: ${{ secrets.GH_TOKEN }}
+          replacesArtifacts: true
