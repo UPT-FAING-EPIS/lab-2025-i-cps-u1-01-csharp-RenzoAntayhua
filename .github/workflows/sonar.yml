@@ -56,5 +56,6 @@ jobs:
         with:
             tag: ${{ github.ref_name }}
             name: "Release ${{ github.ref_name }}"
-            body_path: "RELEASE_NOTES.md"
+            bodyFile: "release_notes.md"
             token: ${{ secrets.GH_TOKEN }}
+            replacesArtifacts: true
