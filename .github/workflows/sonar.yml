@@ -51,11 +51,11 @@ jobs:
         run: |
           echo "## Cambios en la versión 1.0.0" > release_notes.md
           git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s" >> release_notes.md
-      - name: Create GitHub Release
+      - name: Crear Release en GitHub
         uses: ncipollo/release-action@v1
         with:
-            tag: ${{ github.ref_name }}
-            name: "Release ${{ github.ref_name }}"
+            tag: "release-$(date +'%Y%m%d-%H%M%S')"  # Genera un tag único
+            name: "Release $(date +'%Y-%m-%d %H:%M:%S')"
             bodyFile: "release_notes.md"
             token: ${{ secrets.GH_TOKEN }}
             replacesArtifacts: true
