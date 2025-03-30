@@ -36,7 +36,7 @@ jobs:
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: T3
-        setup-command: echo "${{ secrets.GH_PAT }}" | gh auth login --with-token && gh workflow list
+        setup-command: gh workflow list
         command: ls -l cobertura.png
         timeout: 10
         max-score: 4
